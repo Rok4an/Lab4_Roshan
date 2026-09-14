@@ -15,12 +15,12 @@ import javafx.stage.Stage;
  * JavaFX App
  */
 public class App extends Application {
-   private TextField daysField;
-   private TextField airfareField;
-   private TextField carRentalField;
-   private TextField milesField;
-   private TextField parkingField;
-   private TextField lodgingField;
+private TextField daysField;
+private TextField airfareField;
+private TextField carRentalField;
+private TextField milesField;
+private TextField parkingField;
+private TextField lodgingField;
 
    private Label totalExpensesLabel = new Label("Total Expenses: $0.00");
    private Label allowableExpensesLabel = new Label("Allowable Expenses: $0.00");
@@ -73,8 +73,8 @@ public class App extends Application {
         
        errorLabel.setStyle("-fx-text-fill: red;");
 
-       root.getChildren().addAll( grid, errorLabel, totalExpensesLabel, allowableExpensesLabel, excessLabel);
-
+       root.getChildren().addAll(grid, errorLabel, totalExpensesLabel, allowableExpensesLabel, excessLabel);
+      
        Scene scene = new Scene(root, 400, 450);
        primaryStage.setTitle("Travel Expense Calculator");
        primaryStage.setScene(scene);
@@ -135,7 +135,7 @@ public class App extends Application {
        allowableExpensesLabel.setText("Allowable Expenses: $0.00");
        excessLabel.setText("Excess / Amount Saved: $0.00");
        errorLabel.setText("");
-    }
+   }
 
    public static void main(String[] args) {
         launch();
