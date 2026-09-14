@@ -16,12 +16,12 @@ import javafx.stage.Stage;
  * JavaFX App
  */
 public class App extends Application {
-    private TextField daysField = new TextField();
-    private TextField airfareField = new TextField();
-    private TextField carRentalField = new TextField();
-    private TextField milesField = new TextField();
-    private TextField parkingField = new TextField();
-    private TextField lodgingField = new TextField();
+    private TextField daysField;
+    private TextField airfareField;
+    private TextField carRentalField;
+    private TextField milesField;
+    private TextField parkingField;
+    private TextField lodgingField;
 
     private Label totalExpensesLabel = new Label("Total Expenses: $0.00");
     private Label allowableExpensesLabel = new Label("Allowable Expenses: $0.00");
