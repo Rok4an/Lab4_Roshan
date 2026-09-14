@@ -81,8 +81,49 @@ public class App extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-           
+    private void calculateExpenses() {
+        errorLabel.setText("");
+
+        String daysStr = daysField.getText();
+        String airfareStr = airfareField.getText();
+        String carRentalStr = carRentalField.getText();
+        String milesStr = milesField.getText();
+        String parkingStr = parkingField.getText();
+        String lodgingStr = lodgingField.getText();
+
+        if (daysStr.isEmpty() || airfareStr.isEmpty() || carRentalStr.isEmpty() ||
+            milesStr.isEmpty() || parkingStr.isEmpty() || lodgingStr.isEmpty()) {
+            errorLabel.setText("Please fill out all input fields.");
+            return;
+        }
+
+        double days = Double.parseDouble(daysStr);
+        double airfare = Double.parseDouble(airfareStr);
+        double carRental = Double.parseDouble(carRentalStr);
+        double miles = Double.parseDouble(milesStr);
+        double parking = Double.parseDouble(parkingStr);
+        double lodging = Double.parseDouble(lodgingStr);
+
+        if (days <= 0 || airfare < 0 || carRental < 0 || miles < 0 || parking < 0 || lodging < 0) {
+            errorLabel.setText("Please enter valid positive numbers.");
+            return;
+        }
+
+        double totalExpenses = airfare + carRental + (miles * MILEAGE_RATE) + parking + lodging + (days * MEALS_PER_DAY);
+        double totalAllowable = (days * MEALS_PER_DAY) + (days * PARKING_PER_DAY) + (days * LODGING_PER_DAY) + (miles * MILEAGE_RATE);
+        double diff = totalExpenses - totalAllowable;
+
+        totalExpensesLabel.setText(String.format("Total Expenses: $%.2f", totalExpenses));
+        allowableExpensesLabel.setText(String.format("Allowable Expenses: $%.2f", totalAllowable));
+
+        if (diff > 0) {
+            excessLabel.setText(String.format("Excess Amount to Pay: $%.2f", diff));
+        } else {
+            excessLabel.setText(String.format("Amount Saved: $%.2f", Math.abs(diff)));
+        }
     }
+    
+    
 
     public static void main(String[] args) {
         launch();
